@@ -1,0 +1,17 @@
+{
+  "name": "highlight-javascript",
+  "version": "0.0.0",
+  "repo": "ianstormtaylor/highlight-javascript",
+  "description": "A Javascript syntax highlighting plugin.",
+  "keywords": [],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": [
+    "lib/index.js"
+  ],
+  "dependencies": {},
+  "development": {
+    "component/assert": "*",
+    "ianstormtaylor/highlight": "*"
+  }
+}
