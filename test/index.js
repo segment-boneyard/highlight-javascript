@@ -7,7 +7,9 @@ var h;
 
 describe('highlight-javascript', function(){
   beforeEach(function(){
-    h = Highlight().use(javascript);
+    h = Highlight()
+      .prefix('')
+      .use(javascript);
   });
 
   it('should expose a plugin function', function(){
@@ -15,49 +17,45 @@ describe('highlight-javascript', function(){
   });
 
   it('should match booleans', function(){
-    test('true', '<span class="Highlight-boolean">true</span>');
-    test('false', '<span class="Highlight-boolean">false</span>');
+    test('true', '<span class="boolean">true</span>');
+    test('false', '<span class="boolean">false</span>');
   });
 
   it('should match comments', function(){
-    test('a // comment', 'a <span class="Highlight-comment">// comment</span>');
-    test('a /* comment \n across lines */', 'a <span class="Highlight-comment">/* comment \n across lines */</span>');
+    test('a // comment', 'a <span class="comment">// comment</span>');
+    test('a /* comment \n across lines */', 'a <span class="comment">/* comment \n across lines */</span>');
   });
 
   it('should match functions', function(){
-    test('do()', ''
-      + '<span class="Highlight-function">do'
-      + '<span class="Highlight-punctuation">(</span>'
-      + '</span>'
-      + '<span class="Highlight-punctuation">)</span>');
+    test('do()', '<span class="function">do<span class="punctuation">(</span></span><span class="punctuation">)</span>');
   });
 
   it('should match numbers', function(){
-    test('42', '<span class="Highlight-number">42</span>');
-    test('8.3', '<span class="Highlight-number">8.3</span>');
-    test('-8', '<span class="Highlight-operator">-</span><span class="Highlight-number">8</span>');
-    test('NaN', '<span class="Highlight-number">NaN</span>');
-    test('Infinity', '<span class="Highlight-number">Infinity</span>');
+    test('42', '<span class="number">42</span>');
+    test('8.3', '<span class="number">8.3</span>');
+    test('-8', '<span class="operator">-</span><span class="number">8</span>');
+    test('NaN', '<span class="number">NaN</span>');
+    test('Infinity', '<span class="number">Infinity</span>');
   });
 
   it('should match strings', function(){
-    test('"string"', '<span class="Highlight-string">&quot;string&quot;</span>');
-    test('\'string\'', '<span class="Highlight-string">&#39;string&#39;</span>');
+    test('"string"', '<span class="string">&quot;string&quot;</span>');
+    test('\'string\'', '<span class="string">&#39;string&#39;</span>');
   });
 
   it('should match keywords', function(){
-    test('if', '<span class="Highlight-keyword">if</span>');
-    test('new', '<span class="Highlight-keyword">new</span>');
-    test('yield', '<span class="Highlight-keyword">yield</span>');
+    test('if', '<span class="keyword">if</span>');
+    test('new', '<span class="keyword">new</span>');
+    test('yield', '<span class="keyword">yield</span>');
   });
 
   it('should match operators', function(){
-    test('+', '<span class="Highlight-operator">+</span>');
-    test('===', '<span class="Highlight-operator">===</span>');
+    test('+', '<span class="operator">+</span>');
+    test('===', '<span class="operator">===</span>');
   });
 
   it('should match punctuation', function(){
-    test('.', '<span class="Highlight-punctuation">.</span>');
+    test('.', '<span class="punctuation">.</span>');
   });
 
   it('should match a complex example', function(){
@@ -72,56 +70,56 @@ describe('highlight-javascript', function(){
       + '}';
 
     test(js, ''
-      + '<span class="Highlight-keyword">function</span>'
+      + '<span class="keyword">function</span>'
       + ' '
-      + '<span class="Highlight-function">fixture<span class="Highlight-punctuation">(</span></span>'
+      + '<span class="function">fixture<span class="punctuation">(</span></span>'
       + 'arg'
-      + '<span class="Highlight-punctuation">,</span>'
+      + '<span class="punctuation">,</span>'
       + ' thing'
-      + '<span class="Highlight-punctuation">)</span>'
-      + '<span class="Highlight-punctuation">{</span>'
+      + '<span class="punctuation">)</span>'
+      + '<span class="punctuation">{</span>'
       + '\n  '
-      + '<span class="Highlight-keyword">var</span>'
+      + '<span class="keyword">var</span>'
       + ' life '
-      + '<span class="Highlight-operator">=</span>'
+      + '<span class="operator">=</span>'
       + ' '
-      + '<span class="Highlight-number">42</span>'
-      + '<span class="Highlight-punctuation">;</span>'
+      + '<span class="number">42</span>'
+      + '<span class="punctuation">;</span>'
       + '\n  '
-      + '<span class="Highlight-keyword">var</span>'
+      + '<span class="keyword">var</span>'
       + ' everything '
-      + '<span class="Highlight-operator">=</span>'
+      + '<span class="operator">=</span>'
       + ' '
-      + '<span class="Highlight-number">Infinity</span>'
-      + '<span class="Highlight-punctuation">;</span>'
+      + '<span class="number">Infinity</span>'
+      + '<span class="punctuation">;</span>'
       + '\n  '
-      + '<span class="Highlight-keyword">var</span>'
+      + '<span class="keyword">var</span>'
       + ' ret '
-      + '<span class="Highlight-operator">=</span>'
+      + '<span class="operator">=</span>'
       + ' '
-      + '<span class="Highlight-string">&#39;the meaning of life is: &#39;</span>'
+      + '<span class="string">&#39;the meaning of life is: &#39;</span>'
       + ' '
-      + '<span class="Highlight-operator">+</span>'
+      + '<span class="operator">+</span>'
       + ' life'
-      + '<span class="Highlight-punctuation">;</span>'
+      + '<span class="punctuation">;</span>'
       + ' '
-      + '<span class="Highlight-comment">// or so we think</span>'
+      + '<span class="comment">// or so we think</span>'
       + '\n  '
-      + '<span class="Highlight-keyword">if</span>'
+      + '<span class="keyword">if</span>'
       + ' '
-      + '<span class="Highlight-punctuation">(</span>'
+      + '<span class="punctuation">(</span>'
       + 'everything'
-      + '<span class="Highlight-punctuation">)</span>'
+      + '<span class="punctuation">)</span>'
       + ' '
-      + '<span class="Highlight-punctuation">{</span>'
+      + '<span class="punctuation">{</span>'
       + '\n    '
-      + '<span class="Highlight-keyword">return</span>'
+      + '<span class="keyword">return</span>'
       + ' ret'
-      + '<span class="Highlight-punctuation">;</span>'
+      + '<span class="punctuation">;</span>'
       + '\n  '
-      + '<span class="Highlight-punctuation">}</span>'
+      + '<span class="punctuation">}</span>'
       + '\n'
-      + '<span class="Highlight-punctuation">}</span>');
+      + '<span class="punctuation">}</span>');
   });
 });
 
