@@ -27,7 +27,8 @@ describe('highlight-javascript', function(){
   });
 
   it('should match functions', function(){
-    test('do()', '<span class="function">do<span class="punctuation">(</span></span><span class="punctuation">)</span>');
+    test('fn()', '<span class="function"><span class="function">fn</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
+    test('Class()', '<span class="function"><span class="class">Class</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
   });
 
   it('should match numbers', function(){
@@ -72,7 +73,10 @@ describe('highlight-javascript', function(){
     test(js, ''
       + '<span class="keyword">function</span>'
       + ' '
-      + '<span class="function">fixture<span class="punctuation">(</span></span>'
+      + '<span class="function">'
+      + '<span class="function">fixture</span>'
+      + '<span class="punctuation">(</span>'
+      + '</span>'
       + 'arg'
       + '<span class="punctuation">,</span>'
       + ' thing'
