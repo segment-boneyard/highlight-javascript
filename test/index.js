@@ -27,8 +27,8 @@ describe('highlight-javascript', function(){
   });
 
   it('should match functions', function(){
-    test('fn()', '<span class="function"><span class="function">fn</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
-    test('Class()', '<span class="function"><span class="class">Class</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
+    test('camelCase()', '<span class="function"><span class="function">camelCase</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
+    test('PascalCase()', '<span class="function"><span class="class">PascalCase</span><span class="punctuation">(</span></span><span class="punctuation">)</span>');
   });
 
   it('should match numbers', function(){
@@ -42,12 +42,19 @@ describe('highlight-javascript', function(){
   it('should match strings', function(){
     test('"string"', '<span class="string">&quot;string&quot;</span>');
     test('\'string\'', '<span class="string">&#39;string&#39;</span>');
+    test('"8"', '<span class="string">&quot;8&quot;</span>');
   });
 
   it('should match keywords', function(){
     test('if', '<span class="keyword">if</span>');
     test('new', '<span class="keyword">new</span>');
     test('yield', '<span class="keyword">yield</span>');
+  });
+
+  it('should match constants', function(){
+    test('document', '<span class="constant">document</span>');
+    test('window', '<span class="constant">window</span>');
+    test('global', '<span class="constant">global</span>');
   });
 
   it('should match operators', function(){
