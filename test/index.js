@@ -43,6 +43,7 @@ describe('highlight-javascript', function(){
     test('"string"', '<span class="string">&quot;string&quot;</span>');
     test('\'string\'', '<span class="string">&#39;string&#39;</span>');
     test('"8"', '<span class="string">&quot;8&quot;</span>');
+    test('\'//\'', '<span class="string">&#39;//&#39;</span>');
   });
 
   it('should match keywords', function(){
@@ -143,5 +144,12 @@ describe('highlight-javascript', function(){
 
 function test(input, output){
   var code = h.string(input, 'javascript');
-  assert.equal(code, output);
+  try {
+    assert.equal(code, output);
+  } catch (e) {
+    e.expected = output;
+    e.actual = code;
+    e.showDiff = true;
+    throw e;
+  }
 }
