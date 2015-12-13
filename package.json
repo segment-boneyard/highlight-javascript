@@ -1,0 +1,9 @@
+{
+  "name": "highlight-javascript",
+  "version": "0.0.3",
+  "repo": "segmentio/highlight-javascript",
+  "description": "A Highlight plugin for Javascript.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "dependencies": {}
+}
